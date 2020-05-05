@@ -9,3 +9,5 @@ The control unit interacts/controls:
 - water pump
 - heating coil
 - stirring motor
+
+As a control unit I used Arduino Uno with 16x2 lcd with integrated buttons (see img below).
