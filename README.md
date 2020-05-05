@@ -13,4 +13,4 @@ The control unit interacts/controls:
 As a control unit I used Arduino Uno with 16x2 lcd with integrated buttons (see img below).
 
 ![arduino_image](images/ArduinoUno.jpg)
-![arduino_image](images/Shield_16x2.jpg)
+![arduino_image](images/Shield.jpg)
