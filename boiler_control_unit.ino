@@ -1,6 +1,5 @@
 #include <LiquidCrystal.h>
 #include "definitions.h"
-//#include "menuInit.h"
 
 LiquidCrystal lcd(8,9,4,5,6,7);
 
