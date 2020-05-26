@@ -131,6 +131,15 @@ void menuActionManual() {
       case 310:
         restart();
       break;
+      case 311:
+        manual_spirala = !manual_spirala;
+      break;
+      case 312:
+       manual_cerpadlo = !manual_cerpadlo;
+      break;
+      case 313:
+       manual_miesanie = !manual_miesanie;
+      break;
     }
   }
   else if (buttonIdx == 0) {
@@ -152,4 +161,8 @@ void restart() {
   semi_ohrev = false;
   semi_chladenie = false;
   semi_miesanie = false;
+
+  manual_spirala = false;
+  manual_cerpadlo = false;
+  manual_miesanie = false;
 }

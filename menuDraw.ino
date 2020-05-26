@@ -97,4 +97,22 @@ void menuDrawSemi() {
 void menuDrawManual() {
   lcd.clear();
   lcd.print(menu[menuCodeIdx].text);
+
+  switch (menuCode) {
+  case 311:
+    lcd.setCursor(0,1);
+    if (manual_spirala) {lcd.print(F("Zap."));}
+    else {lcd.print(F("Vyp."));}
+    break;
+  case 312:
+    lcd.setCursor(0,1);
+    if (manual_cerpadlo) {lcd.print(F("Zap."));}
+    else {lcd.print(F("Vyp."));}
+    break;
+  case 313:
+    lcd.setCursor(0,1);
+    if (manual_miesanie) {lcd.print(F("Zap."));}
+    else {lcd.print(F("Vyp."));}
+    break;
+  }
 }
