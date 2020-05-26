@@ -13,7 +13,7 @@ void processProgram () {
     break;
   }
   
-  // somewhere inside the switch we have raise menuDraw flag to draw menu
+  // somewhere inside the switch we have to raise menuDraw flag to draw menu
 }
 
 void processProgramAuto() {
