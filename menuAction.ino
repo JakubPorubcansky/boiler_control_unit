@@ -1,4 +1,21 @@
 void menuAction(){
+  switch (programState) {
+    case 0:
+      menuActionMain();
+      break;
+    case 1:
+      menuActionAuto();
+      break;
+    case 2:
+      menuActionSemi();
+      break;
+    case 3:
+      menuActionManual();
+      break;
+  }
+}
+
+void menuActionMain() {
   if (menuCode == 111 || menuCode == 211) {
     switch (buttonIdx) {
     case 1:
@@ -58,9 +75,81 @@ void menuAction(){
 
       // running the selected program
       if (menuCodePrev == 14) {programState = 1;} // auto
-      if (menuCodePrev== 23) {programState = 2;} // semi
+      if (menuCodePrev == 23) {programState = 2;} // semi
       if (menuCodePrev == 31) {programState = 3;} // manual
       break;
     }
   }
+}
+
+void menuActionAuto() {
+  if (buttonIdx == 4) {
+    switch (menuCode) {
+      case 140:
+        restart();
+      break;
+    }
+  }
+  else if (buttonIdx == 0) {
+    menuCode++;
+  } else if (buttonIdx == 3) {
+    menuCode--;
+  }
+}
+
+void menuActionSemi() {
+  if (buttonIdx == 4) {
+    switch (menuCode) {
+      case 231:
+        if (!semi_chladenie){
+          semi_ohrev = !semi_ohrev;
+        }
+      break;
+      case 232:
+        if (!semi_ohrev) {
+          semi_chladenie = !semi_chladenie;  
+        }
+      break;
+      case 233:
+        semi_miesanie = !semi_miesanie;
+      break;
+      case 230:
+        restart();
+      break;
+    }
+  }
+  else if (buttonIdx == 0) {
+    menuCode++;
+  } else if (buttonIdx == 3) {
+    menuCode--;
+  }
+}
+
+void menuActionManual() {
+  if (buttonIdx == 4) {
+    switch (menuCode) {
+      case 310:
+        restart();
+      break;
+    }
+  }
+  else if (buttonIdx == 0) {
+    menuCode++;
+  } else if (buttonIdx == 3) {
+    menuCode--;
+  }
+}
+
+void restart() {
+  programState = 0;
+  
+  menuCode = 1;
+  menuCodePrev = 1;
+  parentCode = 1;
+  
+  menuCodeIdx = 0;
+
+  semi_ohrev = false;
+  semi_chladenie = false;
+  semi_miesanie = false;
 }
