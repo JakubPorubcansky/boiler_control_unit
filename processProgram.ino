@@ -16,14 +16,14 @@ void processProgram () {
   // somewhere inside the switch we have raise menuDraw flag to draw menu
 }
 
-void (processProgramAuto) {
+void processProgramAuto() {
   
 }
 
-void (processProgramSemi) {
+void processProgramSemi() {
   
 }
 
-void (processProgramManual) {
+void processProgramManual() {
   
 }
