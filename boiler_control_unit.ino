@@ -33,6 +33,12 @@ void loop() {
     buttonPressMillis = currentMillis; 
   }
 
+  if(currentMillis - processMillis > 5000) {
+    processProgram();
+    
+    processMillis = currentMillis;
+  }
+
   if(navigate) {
     menuAction();
   
@@ -47,12 +53,6 @@ void loop() {
     menuDraw();
     
     menuCodePrev = menuCode;
-  }
-
-  if(currentMillis - processMillis > 5000) {
-    // here again we have to call menuDraw()
-    
-    processMillis = currentMillis;
   }
 
   prevButtonIdx = buttonIdx;
