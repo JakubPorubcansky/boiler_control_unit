@@ -22,7 +22,7 @@ void menuInit() {
       menu[i].code = 140;
       strcpy(menu[i++].text, "Ukonci");
       menu[i].code = 141;
-      strcpy(menu[i++].text, "AA");
+      strcpy(menu[i++].text, "Stav");
 
   menu[i].code = 2;
   strcpy(menu[i++].text, "Semi");
