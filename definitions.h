@@ -58,5 +58,6 @@ int buttonIdx = -1;
 int prevButtonIdx = -1;
 
 unsigned long currentMillis = 0;
+unsigned long processMillis = 0;
 unsigned long buttonPressMillis = 0;
 int analogInput = 1023;

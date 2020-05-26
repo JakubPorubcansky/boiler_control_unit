@@ -28,15 +28,31 @@ void loop() {
   }
 
   if(buttonIdx != prevButtonIdx && buttonIdx != -1){
-    Serial.println(buttons[buttonIdx]);
-
     navigate = true;
     
     buttonPressMillis = currentMillis; 
   }
 
   if(navigate) {
-    menuUpdate();
+    menuAction();
+  
+    menuCode = verifyMenuCode(menuCode, menuCodePrev);
+    menuCodeIdx = findIdxFromCode(menuCode);
+    
+    parentCode = menuCode / 10;
+    if (parentCode == 0) {
+      parentCode = 1;
+    }
+  
+    menuDraw();
+    
+    menuCodePrev = menuCode;
+  }
+
+  if(currentMillis - processMillis > 5000) {
+    // here again we have to call menuDraw()
+    
+    processMillis = currentMillis;
   }
 
   prevButtonIdx = buttonIdx;
