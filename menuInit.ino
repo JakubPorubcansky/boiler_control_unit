@@ -67,7 +67,19 @@ void menuInit() {
     menu[i].code = 40;
     strcpy(menu[i++].text, "Naspat");
     menu[i].code = 41;
-    strcpy(menu[i++].text, "D");
+    strcpy(menu[i++].text, "teplota 1");
+    menu[i].code = 411;
+    strcpy(menu[i++].text, "");
+    menu[i].code = 42;
+    strcpy(menu[i++].text, "teplota 2");
+    menu[i].code = 421;
+    strcpy(menu[i++].text, "");
+    menu[i].code = 43;
+    strcpy(menu[i++].text, "doba hriatia");
+    menu[i].code = 431;
+    strcpy(menu[i++].text, "");
+
+ // current num of entries = 37
 
  maxMenuItems = i + 1;
 }

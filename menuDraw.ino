@@ -44,9 +44,26 @@ void menuDrawMain() {
     lcd.print(F("C"));
   }
   else if (menuCode == 131) {
-    lcd.print(time1);
-    lcd.print(F(" s."));
-  } else {
+    lcd.print(time1 / 60);
+    if ((time1 % 60) == 0) {lcd.print(F(".0 min."));} 
+    else {lcd.print(F(".5 min."));}
+  } 
+  else if (menuCode == 411) {
+    lcd.print(temp1Default);
+    lcd.print((char)223);
+    lcd.print(F("C"));
+  }
+  else if (menuCode == 421) {
+    lcd.print(temp2Default);
+    lcd.print((char)223);
+    lcd.print(F("C"));
+  }
+  else if (menuCode == 431) {
+    lcd.print(time1Default / 60);
+    if ((time1Default % 60) == 0) {lcd.print(F(".0 min."));} 
+    else {lcd.print(F(".5 min."));}
+  }
+  else {
     lcd.print(menu[menuCodeIdx].text);
   }
 }

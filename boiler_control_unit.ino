@@ -7,6 +7,10 @@ void setup() {
   Serial.begin(9600);
   Serial.println(F("Start!"));
 
+  temp1 = temp1Default;
+  temp2 = temp2Default;
+  time1 = time1Default;
+  
   menuInit();
 
   lcd.begin(16, 2);
@@ -48,6 +52,12 @@ void loop() {
     parentCode = menuCode / 10;
     if (parentCode == 0) {
       parentCode = 1;
+    }
+
+    if ((menuCode == 1 && menuCodePrev == 10) || (menuCode == 2 && menuCodePrev == 20) || (menuCode == 3 && menuCodePrev == 30) || (menuCode == 4 && menuCodePrev == 40)) {
+      temp1 = temp1Default;
+      temp2 = temp2Default;
+      time1 = time1Default;
     }
   
     menuDraw();

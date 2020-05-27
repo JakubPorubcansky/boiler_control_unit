@@ -19,8 +19,7 @@ void menuActionMain() {
   if (menuCode == 111 || menuCode == 211) {
     switch (buttonIdx) {
     case 1:
-      temp1++;
-      if (temp1 > 100) {temp1--;}
+      if (temp1 != 100) {temp1++;}
       break;
     case 2:
       if (temp1 != 0) {temp1--;}
@@ -33,8 +32,7 @@ void menuActionMain() {
   else if (menuCode == 121 || menuCode == 221) {
     switch (buttonIdx) {
     case 1:
-      temp2++;
-      if (temp2 > 100) {temp2--;}
+      if (temp2 != 100) {temp2++;}
       break;
     case 2:
       if (temp2 != 0) {temp2--;}
@@ -51,6 +49,45 @@ void menuActionMain() {
       break;
     case 2:
       if ((time1 - 30) < time1) {time1 = time1 - 30;}
+      break;
+    case 4:
+      menuCode = menuCode / 10U;
+      break;
+    }
+  } 
+  else if (menuCode == 411) {
+    switch (buttonIdx) {
+    case 1:
+      if (temp1Default != 100) {temp1Default++;}
+      break;
+    case 2:
+      if (temp1Default != 0) {temp1Default--;}
+      break;
+    case 4:
+      menuCode = menuCode / 10U;
+      break;
+    }
+  }
+  else if (menuCode == 421) {
+    switch (buttonIdx) {
+    case 1:
+      if (temp2Default != 100) {temp2Default++;}
+      break;
+    case 2:
+      if (temp2Default != 0) {temp2Default--;}
+      break;
+    case 4:
+      menuCode = menuCode / 10U;
+      break;
+    }
+  }
+  else if (menuCode == 431) {
+    switch (buttonIdx) {
+    case 1:
+      if ((time1Default + 30) > time1Default) {time1Default = time1Default + 30;}
+      break;
+    case 2:
+      if ((time1Default - 30) < time1Default) {time1Default = time1Default - 30;}
       break;
     case 4:
       menuCode = menuCode / 10U;
@@ -151,6 +188,10 @@ void menuActionManual() {
 
 void restart() {
   programState = 0;
+
+  temp1 = temp1Default;
+  temp2 = temp2Default;
+  time1 = time1Default;
   
   menuCode = 1;
   menuCodePrev = 1;

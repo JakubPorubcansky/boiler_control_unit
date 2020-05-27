@@ -1,3 +1,7 @@
+unsigned int temp1Default = 0;
+unsigned int temp2Default = 0;
+unsigned int time1Default = 0;
+
 unsigned int temp1 = 0;
 unsigned int temp2 = 0;
 unsigned int time1 = 0;
