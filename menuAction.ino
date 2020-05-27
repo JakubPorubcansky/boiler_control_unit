@@ -45,10 +45,10 @@ void menuActionMain() {
   else if (menuCode == 131) {
     switch (buttonIdx) {
     case 1:
-      if ((time1 + 30) > time1) {time1 = time1 + 30;}
+      if ((time1 + 30) <= time1Max) {time1 = time1 + 30;}
       break;
     case 2:
-      if ((time1 - 30) < time1) {time1 = time1 - 30;}
+      if ((time1 - 30) >= 0) {time1 = time1 - 30;}
       break;
     case 4:
       menuCode = menuCode / 10U;
@@ -84,10 +84,10 @@ void menuActionMain() {
   else if (menuCode == 431) {
     switch (buttonIdx) {
     case 1:
-      if ((time1Default + 30) > time1Default) {time1Default = time1Default + 30;}
+      if ((time1Default + 30) <= time1Max) {time1Default = time1Default + 30;}
       break;
     case 2:
-      if ((time1Default - 30) < time1Default) {time1Default = time1Default - 30;}
+      if ((time1Default - 30) >= 0) {time1Default = time1Default - 30;}
       break;
     case 4:
       menuCode = menuCode / 10U;

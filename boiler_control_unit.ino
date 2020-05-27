@@ -1,5 +1,6 @@
 #include <LiquidCrystal.h>
 #include "definitions.h"
+#include <EEPROM.h>
 
 LiquidCrystal lcd(8,9,4,5,6,7);
 
@@ -13,6 +14,14 @@ void setup() {
   
   menuInit();
 
+  int val = EEPROM.read(temp1DefaultEEPROMAddress);
+  if (val != 255) {temp1Default = val;}
+  val = EEPROM.read(temp2DefaultEEPROMAddress);
+  if (val != 255) {temp2Default = val;}
+
+  temp1 = temp1Default;
+  temp2 = temp2Default;
+  
   lcd.begin(16, 2);
   lcd.clear();
   lcd.print(F("Serus gazda!"));
@@ -59,6 +68,10 @@ void loop() {
       temp2 = temp2Default;
       time1 = time1Default;
     }
+    
+    if (menuCode == 41 && menuCodePrev == 411) {EEPROM.write(temp1DefaultEEPROMAddress, temp1Default);}
+    if (menuCode == 42 && menuCodePrev == 421) {EEPROM.write(temp2DefaultEEPROMAddress, temp2Default);}
+//    if (menuCode == 43 && menuCodePrev == 431) {}
   
     menuDraw();
     
