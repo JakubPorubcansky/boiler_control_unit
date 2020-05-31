@@ -14,15 +14,16 @@ void setup() {
   
   menuInit();
 
-//  pinMode(11, OUTPUT);
-
   int val = EEPROM.read(temp1DefaultEEPROMAddress);
   if (val != 255) {temp1Default = val;}
   val = EEPROM.read(temp2DefaultEEPROMAddress);
   if (val != 255) {temp2Default = val;}
+  val = EEPROM.read(time1DefaultEEPROMAddressFrom);
+  if (val != 255) {readTimeFromEEPROM();}
 
   temp1 = temp1Default;
   temp2 = temp2Default;
+  time1 = time1Default;
   
   lcd.begin(16, 2);
   lcd.clear();
@@ -84,7 +85,7 @@ void loop() {
     
     if (menuCode == 41 && menuCodePrev == 411) {EEPROM.write(temp1DefaultEEPROMAddress, temp1Default);}
     if (menuCode == 42 && menuCodePrev == 421) {EEPROM.write(temp2DefaultEEPROMAddress, temp2Default);}
-//    if (menuCode == 43 && menuCodePrev == 431) {}
+    if (menuCode == 43 && menuCodePrev == 431) {writeTimeToEEPROM();}
   
     menuDraw();
     
@@ -95,36 +96,28 @@ void loop() {
   navigate = false;
 }
 
-int getButtonIdx(int bIdx, int aInput) {
-
-  if(aInput == 1023) {
-    return -1;
+void writeTimeToEEPROM() {
+  int nDigits = getNumberOfDigits(time1Default);
+  int val = time1Default;
+  for (int i=nDigits; i>0; i--) {
+    if (i == 1) {
+      EEPROM.write(time1DefaultEEPROMAddressFrom + nDigits - i, time1Default % 10);
+    } else {
+      EEPROM.write(time1DefaultEEPROMAddressFrom + nDigits - i, val / pow(10,(i-1)));
+    }
+    val = val % int(pow(10,(i-1)));
   }
-  else 
-  {
-    if(bIdx != -1) {
-      return bIdx;
-    }
-    else {
-      if(aInput < 50 && aInput >= 0){
-        return 0;
-      }
-      else
-      if(aInput < 150){
-        return 1;
-      }
-      else
-      if(aInput < 300){
-        return 2;
-      }
-      else
-      if(aInput < 500){
-        return 3;
-      }
-      else
-      if(aInput < 750){
-        return 4;
-      }
-    }
+  for (int i=time1DefaultEEPROMAddressFrom + nDigits; i <= time1DefaultEEPROMAddressTo; i++) {
+    EEPROM.write(i, 255);
+  }
+}
+
+void readTimeFromEEPROM() {
+  time1Default = 0;
+  int val = 0; 
+  for(int i=time1DefaultEEPROMAddressFrom; i<=time1DefaultEEPROMAddressTo; i++) {
+    val = EEPROM.read(i);
+    if(val == 255) {break;}
+    time1Default = (time1Default * 10) + val;
   }
 }

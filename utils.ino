@@ -36,3 +36,37 @@ int getNumberOfDigits(unsigned int num) {
   }
   return nDigits;
 }
+
+int getButtonIdx(int bIdx, int aInput) {
+
+  if(aInput == 1023) {
+    return -1;
+  }
+  else 
+  {
+    if(bIdx != -1) {
+      return bIdx;
+    }
+    else {
+      if(aInput < 50 && aInput >= 0){
+        return 0;
+      }
+      else
+      if(aInput < 150){
+        return 1;
+      }
+      else
+      if(aInput < 300){
+        return 2;
+      }
+      else
+      if(aInput < 500){
+        return 3;
+      }
+      else
+      if(aInput < 750){
+        return 4;
+      }
+    }
+  }
+}

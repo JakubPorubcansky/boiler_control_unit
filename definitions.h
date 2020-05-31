@@ -5,9 +5,9 @@ unsigned int time1Default = 0;
 unsigned int temp1DefaultEEPROMAddress = 1;
 unsigned int temp2DefaultEEPROMAddress = 2;
 unsigned int time1DefaultEEPROMAddressFrom = 3;
-unsigned int time1DefaultEEPROMAddressTo = 26;
+unsigned int time1DefaultEEPROMAddressTo = 8;
 
-const unsigned long time1Max = 183600;
+const unsigned long time1Max = 999999;
 
 unsigned int temp1 = 0;
 unsigned int temp2 = 0;
