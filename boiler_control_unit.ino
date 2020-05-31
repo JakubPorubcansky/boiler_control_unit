@@ -14,6 +14,8 @@ void setup() {
   
   menuInit();
 
+//  pinMode(11, OUTPUT);
+
   int val = EEPROM.read(temp1DefaultEEPROMAddress);
   if (val != 255) {temp1Default = val;}
   val = EEPROM.read(temp2DefaultEEPROMAddress);
@@ -30,6 +32,17 @@ void setup() {
 }
 
 void loop() {
+//  for (int i = 200; i<=255; i+=1)
+//  {
+//    analogWrite(11, i);
+//    delay(10);
+//  }
+//  for (int i = 255; i!=200; i-=1)
+//  {
+//    analogWrite(11, i);
+//    delay(10);
+//  } 
+  
   currentMillis = millis();
   analogInput = analogRead(A0);
 
