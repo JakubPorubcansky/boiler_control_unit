@@ -86,9 +86,9 @@ void menuDrawSemi() {
     lcd.setCursor(0,1);
     if (semi_ohrev) {lcd.print(F("Zap."));}
     else {lcd.print(F("Vyp."));}
-    lcd.print(F(" (0"));
+    lcd.print(F(" (10"));
     lcd.print((char)223);
-    lcd.print(F("C)"));
+    lcd.print(F("C,120m)"));
     break;
   case 232:
     lcd.print(F(" "));

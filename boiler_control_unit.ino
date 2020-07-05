@@ -8,10 +8,6 @@ void setup() {
   Serial.begin(9600);
   Serial.println(F("Start!"));
 
-  temp1 = temp1Default;
-  temp2 = temp2Default;
-  time1 = time1Default;
-  
   menuInit();
 
   int val = EEPROM.read(temp1DefaultEEPROMAddress);
@@ -94,30 +90,4 @@ void loop() {
 
   prevButtonIdx = buttonIdx;
   navigate = false;
-}
-
-void writeTimeToEEPROM() {
-  int nDigits = getNumberOfDigits(time1Default);
-  int val = time1Default;
-  for (int i=nDigits; i>0; i--) {
-    if (i == 1) {
-      EEPROM.write(time1DefaultEEPROMAddressFrom + nDigits - i, time1Default % 10);
-    } else {
-      EEPROM.write(time1DefaultEEPROMAddressFrom + nDigits - i, val / pow(10,(i-1)));
-    }
-    val = val % int(pow(10,(i-1)));
-  }
-  for (int i=time1DefaultEEPROMAddressFrom + nDigits; i <= time1DefaultEEPROMAddressTo; i++) {
-    EEPROM.write(i, 255);
-  }
-}
-
-void readTimeFromEEPROM() {
-  time1Default = 0;
-  int val = 0; 
-  for(int i=time1DefaultEEPROMAddressFrom; i<=time1DefaultEEPROMAddressTo; i++) {
-    val = EEPROM.read(i);
-    if(val == 255) {break;}
-    time1Default = (time1Default * 10) + val;
-  }
 }

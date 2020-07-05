@@ -21,6 +21,8 @@ bool semi_ohrev = false;
 bool semi_chladenie = false;
 bool semi_miesanie = false;
 
+unsingned int processTimeElapsed = 0;
+
 // state of the program (0 - menu, 1 - auto, 2 - semi, 3 - manual)
 unsigned int programState = 0;
 

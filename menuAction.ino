@@ -192,6 +192,8 @@ void restart() {
   temp1 = temp1Default;
   temp2 = temp2Default;
   time1 = time1Default;
+
+  processTimeElapsed = 0;
   
   menuCode = 1;
   menuCodePrev = 1;
