@@ -71,6 +71,21 @@ void menuDrawMain() {
 void menuDrawAuto() {
   lcd.clear();
   lcd.print(menu[menuCodeIdx].text);
+  
+  if(menuCode != 140) {
+    lcd.setCursor(0,1);
+    int nMins = processTimeElapsed / 60;
+    int n1 = getNumberOfDigits(tempReading);
+    int n2 = getNumberOfDigits(nMins);
+    for(int i=1; i<=(12 - n1 - n2); i++) {
+      lcd.print(F(" "));
+    }
+    lcd.print(tempReading);
+    lcd.print((char)223);
+    lcd.print(F("C,"));
+    lcd.print(nMins);
+    lcd.print(F("m"));
+  }
 }
 
 void menuDrawSemi() {
@@ -86,9 +101,6 @@ void menuDrawSemi() {
     lcd.setCursor(0,1);
     if (semi_ohrev) {lcd.print(F("Zap."));}
     else {lcd.print(F("Vyp."));}
-    lcd.print(F(" (10"));
-    lcd.print((char)223);
-    lcd.print(F("C,120m)"));
     break;
   case 232:
     lcd.print(F(" "));
@@ -98,9 +110,6 @@ void menuDrawSemi() {
     lcd.setCursor(0,1);
     if (semi_chladenie) {lcd.print(F("Zap."));}
     else {lcd.print(F("Vyp."));}
-    lcd.print(F(" (0"));
-    lcd.print((char)223);
-    lcd.print(F("C)"));
     break;
   case 233:
     lcd.setCursor(0,1);
@@ -109,6 +118,19 @@ void menuDrawSemi() {
     break;
   }
 
+  if(menuCode != 230) {
+    int nMins = processTimeElapsed / 60;
+    int n1 = getNumberOfDigits(tempReading);
+    int n2 = getNumberOfDigits(nMins);
+    for(int i=1; i<=(8 - n1 - n2); i++) {
+      lcd.print(F(" "));
+    }
+    lcd.print(tempReading);
+    lcd.print((char)223);
+    lcd.print(F("C,"));
+    lcd.print(nMins);
+    lcd.print(F("m"));
+  }
 }
 
 void menuDrawManual() {
@@ -131,5 +153,19 @@ void menuDrawManual() {
     if (manual_miesanie) {lcd.print(F("Zap."));}
     else {lcd.print(F("Vyp."));}
     break;
+  }
+
+  if(menuCode != 310) {
+    int nMins = processTimeElapsed / 60;
+    int n1 = getNumberOfDigits(tempReading);
+    int n2 = getNumberOfDigits(nMins);
+    for(int i=1; i<=(8 - n1 - n2); i++) {
+      lcd.print(F(" "));
+    }
+    lcd.print(tempReading);
+    lcd.print((char)223);
+    lcd.print(F("C,"));
+    lcd.print(nMins);
+    lcd.print(F("m"));
   }
 }

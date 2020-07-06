@@ -1,4 +1,9 @@
 void processProgram () {
+  processTimeElapsed = (currentMillis - startProcessMillis) / 1000;
+  tempSensor.requestTemperatures();
+
+  tempReading = (int) tempSensor.getTempCByIndex(0);
+  
   switch (programState) {
     case 0:
     break;
@@ -13,7 +18,7 @@ void processProgram () {
     break;
   }
   
-  // somewhere inside the switch we have to raise menuDraw flag to draw menu
+  menuDraw();
 }
 
 void processProgramAuto() {

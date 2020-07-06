@@ -194,6 +194,9 @@ void restart() {
   time1 = time1Default;
 
   processTimeElapsed = 0;
+  processStarted = false;
+
+  tempReading = 0;
   
   menuCode = 1;
   menuCodePrev = 1;

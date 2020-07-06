@@ -1,12 +1,21 @@
 #include <LiquidCrystal.h>
 #include "definitions.h"
 #include <EEPROM.h>
+#include <OneWire.h>
+#include <DallasTemperature.h>
 
+#define TEMP_BUS 13
+
+OneWire oneWire(TEMP_BUS); 
+DallasTemperature tempSensor(&oneWire);
+ 
 LiquidCrystal lcd(8,9,4,5,6,7);
 
 void setup() {
   Serial.begin(9600);
   Serial.println(F("Start!"));
+
+  tempSensor.begin();
 
   menuInit();
 
@@ -43,7 +52,7 @@ void loop() {
   currentMillis = millis();
   analogInput = analogRead(A0);
 
-  // display welcome message for 2 seconds
+  // display welcome message for 1 sec
   if(currentMillis < 1000) {return;}
 
   if(currentMillis - buttonPressMillis > 200){
@@ -56,10 +65,14 @@ void loop() {
     buttonPressMillis = currentMillis; 
   }
 
-  if(currentMillis - processMillis > 5000) {
+  if(currentMillis - lastProcessMillis > 5000 && programState != 0) {
+    if(processStarted == false) {
+      processStarted = true;
+      startProcessMillis = currentMillis;
+    }
     processProgram();
     
-    processMillis = currentMillis;
+    lastProcessMillis = currentMillis;
   }
 
   if(navigate) {

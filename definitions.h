@@ -13,6 +13,8 @@ unsigned int temp1 = 0;
 unsigned int temp2 = 0;
 unsigned int time1 = 0;
 
+int tempReading = 0;
+
 bool manual_spirala = false;
 bool manual_cerpadlo = false;
 bool manual_miesanie = false;
@@ -20,8 +22,6 @@ bool manual_miesanie = false;
 bool semi_ohrev = false;
 bool semi_chladenie = false;
 bool semi_miesanie = false;
-
-unsingned int processTimeElapsed = 0;
 
 // state of the program (0 - menu, 1 - auto, 2 - semi, 3 - manual)
 unsigned int programState = 0;
@@ -70,7 +70,11 @@ const char * buttons[5] =
 int buttonIdx = -1;
 int prevButtonIdx = -1;
 
+unsigned int processTimeElapsed = 0;
+unsigned long lastProcessMillis = 0;
+unsigned long startProcessMillis = 0;
+bool processStarted = false;
+
 unsigned long currentMillis = 0;
-unsigned long processMillis = 0;
 unsigned long buttonPressMillis = 0;
 int analogInput = 1023;
